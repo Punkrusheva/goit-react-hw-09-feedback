@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  background: #e8edf2;
+  margin: 0;
+  padding: 15px;
+}
