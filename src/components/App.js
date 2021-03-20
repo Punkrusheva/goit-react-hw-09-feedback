@@ -32,7 +32,9 @@ export default memo(function App() {
         return;
     }
   };
-
+  
+  const total = good + neutral + bad;
+  const positiveFeedback = Math.round((100 * good) / total)
   return (
    <>
         <Section title="Pleas leave feedback">
@@ -41,15 +43,15 @@ export default memo(function App() {
           onLeaveFeedback={onLeaveFeedback}
         />
       </Section>
-       {good + neutral + bad > 0 && (<Section title="Statistics">
+       {total > 0 && (<Section title="Statistics">
           <Statistics
             options={Object.keys(option)}
             state={option}
-            total={good + neutral + bad}
-        positiveFeedback={Math.round((100 * good) / (good + neutral + bad)) > 0 ? Math.round((100 * good) / (good + neutral + bad)) : 0}
+            total={total}
+        positiveFeedback={positiveFeedback > 0 ? positiveFeedback : 0}
         />
         </Section>)}
-        {(good + neutral + bad) === 0 && (<Notification message="No feedback given"/>)}
+        {total === 0 && (<Notification message="No feedback given"/>)}
       </>
 )
 });
